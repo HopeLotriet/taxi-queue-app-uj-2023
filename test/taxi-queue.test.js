@@ -2,7 +2,7 @@
 import assert from 'assert';
 import {joinQueue, queueLength, 
 		leaveQueue, joinTaxiQueue, 
-		taxiQueueLength} from '../taxi.sql.js'
+		taxiQueueLength, taxiDepart} from '../taxi.sql.js'
 
 import * as sqlite from 'sqlite';
 import sqlite3 from 'sqlite3';

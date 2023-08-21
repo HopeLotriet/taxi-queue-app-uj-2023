@@ -1,7 +1,7 @@
 import express from "express";
 
 // use the SQL methods in the API routes below
-import {joinQueue, leaveQueue} from './taxi.sql.js';
+import {joinQueue, leaveQueue, queueLength, joinTaxiQueue, taxiQueueLength, taxiDepart} from './taxi.sql.js';
 
 const app = express();
 
