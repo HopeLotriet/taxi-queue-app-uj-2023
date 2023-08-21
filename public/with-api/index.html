@@ -25,9 +25,9 @@
 			<img src="../images/queue.png" alt="" width="100">
 			<img src="../images/queue.png" alt="" width="100">
 			<img src="../images/queue.png" alt="" width="100">
-			<span class="passenger_queue_count count" x-text='queueLength' >0</span>
-			<button class="join_queue">Join</button>
-			<button class="leave_queue">Leave</button>
+			<span class="passenger_queue_count count" x-text="addQueue">0</span>
+			<button class="join_queue" x-show="" x-on:click="joinQueue">Join</button>
+			<button class="leave_queue" x-show="" x-on:click="leaveQueue">Leave</button>
 	
 		</div>
 	
@@ -36,8 +36,9 @@
 			<img src="../images/minivan.png" alt="" width="100">
 			<img src="../images/minivan.png" alt="" width="100">
 			<img src="../images/minivan.png" alt="" width="100">
-			<span class="taxi_queue_count count" >0</span>
-			<button class="join_taxi_queue">Join queue</button>
+			<span class="taxi_queue_count count" x-text="joinTaxi">0</span>
+			<button class="join_taxi_queue" x-show="" x-on:click="joinTaxiQueue">Join queue</button>
+			<button class="join_taxi_queue" x-show="" x-on:click="leaveTaxiQueue">Leave queue</button>
 		</div>
 	
 		<div class="section" >
@@ -47,7 +48,9 @@
 			<img src="../images/arrow.png" alt="" width="100">
 			<img src="../images/minivan.png" alt="" width="100">
 			<!-- <span class="taxi_queue_count count" >0</span> -->
-			<button class="depart">Depart</button>
+			<button class="depart" x-show="" x-on:click="taxiDepart">Depart</button>
+			
+			<div style="background-color: #FFFF00;" x-text="taxiMessage"></div>
 		</div>
 	
 

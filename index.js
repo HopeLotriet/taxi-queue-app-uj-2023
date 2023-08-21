@@ -1,7 +1,7 @@
 import express from "express";
 
 // use the SQL methods in the API routes below
-import {joinQueue} from './taxi.sql.js';
+import {joinQueue, leaveQueue} from './taxi.sql.js';
 
 const app = express();
 
@@ -13,16 +13,24 @@ app.use(express.json());
 const PORT = process.env.PORT || 4015;
 
 // passenger joins the queue
-app.post('/api/passenger/join', (req, res) => {
+app.post('/api/passenger/join', async (req, res) => {
+
+    const passengers = req.body.passenger_queue_count;
+
+    await joinQueue(passengers)
     res.json({
-        message : 'join queue'
+        passengers: "Success",
+        taxi : 'Joined Queue'
     })
 })
 
 // passenger leaves the queue
-app.post('/api/passenger/leave', (req, res) => {
+app.post('/api/passenger/leave', async (req, res) => {
+
+    await leaveQueue()
     res.json({
-        message : 'leave queue'
+        passengers: "Success",
+        taxi : 'Has left the Queue'
     })
 });
 
