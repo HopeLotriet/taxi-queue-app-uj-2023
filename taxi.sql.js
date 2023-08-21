@@ -10,8 +10,10 @@ await db.migrate();
 
 export async function joinQueue(passenger_queue_count) {
     // console.log('join queue')
-const sql = `INSERT INTO taxi_queue (passenger_queue_count) VALUES (?)`
-await db.run(sql, [passenger_queue_count])
+const sql = `update taxi_queue set passenger_queue_count = taxi_queue_count`
+if (passenger_queue_count >= 0) {
+    await db.run(sql, [passenger_queue_count])
+}
 }
 
 await joinQueue()
@@ -28,7 +30,7 @@ const result2 = await leaveQueue()
 console.log(result2)
 
 export async function joinTaxiQueue(taxi_queue_count) {
-    const sql = `INSERT INTO taxi_queue (taxi_queue_count) VALUES (?)`
+    const sql = `update taxi_queue set taxi_queue_count = passenger_queue_count`
     
         await db.run(sql, [taxi_queue_count]);
 
